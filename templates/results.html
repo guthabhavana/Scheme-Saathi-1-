@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SchemeSaathi - Scholarship Results</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            margin: 0;
+            padding: 20px;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+        }
+
+        h1 {
+            color: #173b72;
+        }
+
+        .card {
+            background: #eef6ff;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #173b72;
+            color: white;
+            padding: 12px 18px;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+
+        .empty {
+            background: #fff7ed;
+            padding: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎓 SchemeSaathi</h1>
+        <h2>Scholarship Results</h2>
+
+        <p>Welcome, {{ name }}!</p>
+        <p>Your degree: <strong>{{ degree }}</strong></p>
+
+        {% if matches %}
+            <h2>Scholarships matching your details</h2>
+
+            {% for scheme in matches %}
+                <div class="card">
+                    <h3>{{ scheme["name"] }}</h3>
+                    <p>{{ scheme.get("description", "Scholarship support for eligible students.") }}</p>
+                    <p><strong>Maximum family income:</strong>
+                       ₹{{ scheme["max_income"] }}</p>
+                </div>
+            {% endfor %}
+
+        {% else %}
+            <div class="empty">
+                <h3>No matching schemes found</h3>
+                <p>Try checking your details or adding more verified scholarships to our database.</p>
+            </div>
+        {% endif %}
+
+        <a class="button" href="/">← Back to Home</a>
+    </div>
+</body>
+</html>

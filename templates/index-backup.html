@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SchemeSaathi</title>
+</head>
+<body>
+
+    <h1>Welcome to SchemeSaathi 🎓</h1>
+
+    <p>Find scholarships that match your profile!</p>
+
+    <form action="/find" method="POST">
+
+        <label>Your Name:</label>
+        <input type="text" name="name" required>
+
+        <br><br>
+
+        <label>Select Your Degree:</label>
+
+        <select name="degree" required>
+            <option value="">Choose your degree</option>
+            <option value="B.Tech">B.Tech</option>
+            <option value="B.Sc">B.Sc</option>
+            <option value="B.Com">B.Com</option>
+            <option value="B.A">B.A</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <br><br>
+
+        <label>Annual Family Income (₹):</label>
+        <input type="number" name="income" min="0" required>
+
+        <br><br>
+
+        <button type="submit">Find Scholarships</button>
+
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SchemeSaathi | Find Scholarships</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fc;
+            color: #24324a;
+        }
+
+        nav {
+            background: #173b70;
+            color: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        nav h2 { margin: 0; }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 18px;
+        }
+
+        .hero {
+            padding: 55px 20px;
+            text-align: center;
+            background: #e6efff;
+        }
+
+        .hero h1 {
+            color: #173b70;
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .hero p { font-size: 17px; line-height: 1.6; }
+
+        .container {
+            width: 90%;
+            max-width: 650px;
+            margin: 30px auto;
+        }
+
+        .form-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px #173b7012;
+        }
+
+        .form-card h2 { color: #173b70; margin-top: 0; }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 16px;
+            background: white;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 25px;
+            border: none;
+            border-radius: 8px;
+            background: #138779;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover { background: #0e6d62; }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .feature {
+            background: white;
+            padding: 18px 10px;
+            text-align: center;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 29px; }
+            .features { grid-template-columns: 1fr; }
+            .form-card { padding: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h2>🎓 SchemeSaathi</h2>
+        <div>
+            <a href="/">Home</a>
+            <a href="#find">Find Schemes</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Find Government Schemes Made for You</h1>
+        <p>Discover scholarships and financial support that may match your student profile.</p>
+    </section>
+
+    <main class="container" id="find">
+        <section class="form-card">
+            <h2>Find Your Scholarships</h2>
+            <p>Enter your details to explore relevant opportunities.</p>
+
+            <form action="/find" method="POST">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name"
+                       placeholder="Enter your name" required>
+
+                <label for="degree">Select Your Degree</label>
+                <select id="degree" name="degree" required>
+                    <option value="">Choose your degree</option>
+                    <option value="B.Tech">B.Tech</option>
+                    <option value="B.Sc">B.Sc</option>
+                    <option value="B.Com">B.Com</option>
+                    <option value="B.A">B.A</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="income">Annual Family Income (₹)</label>
+                <input type="number" id="income" name="income"
+                       min="0" placeholder="Enter annual family income" required>
+
+                <button type="submit">Find Eligible Schemes →</button>
+            </form>
+        </section>
+
+        <section class="features">
+            <div class="feature">🔎 Easy Search</div>
+            <div class="feature">🎓 Student Focused</div>
+            <div class="feature">🤝 More Opportunities</div>
+        </section>
+    </main>
+
+    <footer>
+        SchemeSaathi | Helping students discover opportunities
+    </footer>
+</body>
+</html>

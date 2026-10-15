@@ -1,0 +1,60 @@
+/* Basic styling for Scheme Saathi */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fb;
+    margin: 0;
+    padding: 0;
+    color: #333333;
+}
+
+h1 {
+    color: #176b45;
+    text-align: center;
+}
+
+h2 {
+    color: #176b45;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    background-color: #176b45;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #105236;
+}
+
+input,
+select,
+textarea {
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    max-width: 100%;
+}
+
+a {
+    color: #176b45;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
