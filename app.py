@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-
+from schemes import schemes
 app = Flask(__name__)
 
 # Sample scholarship data for testing
@@ -65,6 +65,9 @@ def find():
         degree=degree,
         matches=matches
     )
+@app.route("/schemes")
+def show_schemes():
+    return render_template("schemes.html", schemes=schemes)
 
 
 if __name__ == "__main__":

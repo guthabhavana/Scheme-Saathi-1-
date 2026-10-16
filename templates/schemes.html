@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship Schemes | SchemeSaathi</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fc;
+            color: #24324a;
+        }
+
+        nav {
+            background: #173b70;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav h2 {
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 45px 20px;
+            background: #e6efff;
+        }
+
+        .hero h1 {
+            color: #173b70;
+            font-size: 34px;
+        }
+
+        .hero p {
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        .scheme-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .scheme-card {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px #173b7012;
+            border-top: 5px solid #138779;
+        }
+
+        .scheme-card h2 {
+            color: #173b70;
+            font-size: 21px;
+        }
+
+        .scheme-card p {
+            line-height: 1.7;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e0f5ef;
+            color: #087568;
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .official-link {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 11px 16px;
+            background: #138779;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .official-link:hover {
+            background: #0e6d62;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 28px;
+            padding: 12px 18px;
+            background: #173b70;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #64748b;
+        }
+
+        @media (max-width: 650px) {
+            .scheme-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>🎓 SchemeSaathi</h2>
+        <a href="/">← Back to Home</a>
+    </nav>
+
+    <section class="hero">
+        <h1>Explore Scholarship Opportunities 🎓</h1>
+        <p>Discover financial support opportunities for your education.</p>
+    </section>
+
+    <main class="container">
+
+        <div class="scheme-grid">
+
+            {% for scheme in schemes %}
+            <article class="scheme-card">
+
+                <span class="badge">🎓 Scholarship Opportunity</span>
+
+                <h2>{{ scheme.name }}</h2>
+
+                <p>{{ scheme.description }}</p>
+
+                <p>
+                    <strong>Maximum family income:</strong>
+                    ₹{{ "{:,.0f}".format(scheme.max_income) }}
+                </p>
+
+                {% if scheme.get("benefits") %}
+                <p>
+                    <strong>Benefits:</strong>
+                    {{ scheme.benefits }}
+                </p>
+                {% endif %}
+
+                {% if scheme.get("eligibility") %}
+                <p>
+                    <strong>Eligibility:</strong>
+                    {{ scheme.eligibility }}
+                </p>
+                {% endif %}
+
+                {% if scheme.get("documents") %}
+                <p><strong>Documents to check:</strong></p>
+                <ul>
+                    {% for document in scheme.documents %}
+                    <li>{{ document }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                {% if scheme.get("link") %}
+                <a class="official-link"
+                   href="{{ scheme.link }}"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Visit Official Website ↗
+                </a>
+                {% elif scheme.get("official_url") %}
+                <a class="official-link"
+                   href="{{ scheme.official_url }}"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Visit Official Website ↗
+                </a>
+                {% endif %}
+
+            </article>
+            {% endfor %}
+
+        </div>
+
+        <a href="/" class="back-button">← Back to Home</a>
+
+    </main>
+
+    <footer>
+        SchemeSaathi | Helping students discover opportunities
+    </footer>
+
+</body>
+</html>
